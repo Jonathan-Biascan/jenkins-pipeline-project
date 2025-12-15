@@ -1,12 +1,14 @@
 pipeline {
-  agent any
+  agent {
+    docker { image 'python:3.12-slim' }
+  }
 
   stages {
     stage('Build') {
       steps {
         echo 'Build: installing dependencies'
-        sh 'python3 --version'
-        sh 'pip3 install -r requirements.txt'
+        sh 'python --version'
+        sh 'pip install -r requirements.txt'
       }
     }
 
