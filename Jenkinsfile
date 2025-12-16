@@ -1,6 +1,9 @@
 pipeline {
-  agent {
-    docker { image 'python:3.12-slim' }
+  agent any
+
+  environment {
+    HOME = "/tmp"
+    PIP_CACHE_DIR = "/tmp/pip-cache"
   }
 
   stages {
@@ -8,14 +11,15 @@ pipeline {
       steps {
         echo 'Build: installing dependencies'
         sh 'python --version'
-        sh 'pip install -r requirements.txt'
+        sh 'python -m pip install --upgrade pip'
+        sh 'python -m pip install --user -r requirements.txt'
       }
     }
 
     stage('Test') {
       steps {
         echo 'Test: running pytest'
-        sh 'pytest -q'
+        sh 'python -m pytest -q'
       }
     }
 
