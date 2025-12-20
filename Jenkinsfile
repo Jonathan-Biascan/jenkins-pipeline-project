@@ -3,7 +3,7 @@ pipeline {
 
   environment {
     // CHANGE THIS LINE to YOUR Docker Hub username:
-    DOCKERHUB_REPO = "YOUR_DOCKERHUB_USERNAME/jenkins-pipeline-project"
+    DOCKERHUB_REPO = "jonathan/jenkins-pipeline-project"
     IMAGE_TAG = "${env.BUILD_NUMBER}"
   }
 
