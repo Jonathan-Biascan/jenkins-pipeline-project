@@ -1,5 +1,6 @@
 pipeline {
   agent any
+  agent any
 
   environment {
     VENV = ".venv"
@@ -24,7 +25,7 @@ pipeline {
       }
     }
 
-    stage('Test') {
+    stage('Docker Login') {
       steps {
         sh '''
           . ${VENV}/bin/activate
@@ -63,3 +64,4 @@ pipeline {
     }
   }
 }
+
